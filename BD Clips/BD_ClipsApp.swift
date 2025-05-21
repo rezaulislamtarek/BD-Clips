@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct BD_ClipsApp: App {
-     
+    @StateObject private var state : AppState = AppState()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ClipView()
+                .environmentObject(state)
         }
     }
 }

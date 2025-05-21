@@ -17,8 +17,8 @@ struct ClipItemView: View {
             // Video Player (in a real app, you'd implement an actual video player)
             Color.black.opacity(0.8) // Placeholder for video
                 .overlay(
-                    Text("video player")
-                    //RealVideoPlayerView(videoURL: video.videoURL, selectedVideoIndex: $selectedVideoIndex)
+                     
+                    RealVideoPlayerView(videoURL: video.videoURL, selectedVideoIndex: $selectedVideoIndex)
                 )
             
             // UI Overlay
