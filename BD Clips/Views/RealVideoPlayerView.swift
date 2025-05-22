@@ -12,7 +12,6 @@ import AVKit
 struct RealVideoPlayerView: View {
      
     let videoURL: URL
-    @Binding var selectedVideoIndex : Int
     @State private var player = AVPlayer()
     @State private var isPlaying: Bool = true
     @State private var playerWorkItem: DispatchWorkItem?
@@ -38,23 +37,6 @@ struct RealVideoPlayerView: View {
                 // Cancel any pending work items
                 playerWorkItem?.cancel()
             }
-            .onChange(of:  selectedVideoIndex) { newValue in
-                // Cancel previous work item if any
-                playerWorkItem?.cancel()
-                
-                // Create a new work item
-                let newWorkItem = DispatchWorkItem {
-                     
-                        isPlaying = true
-                        player.play()
-                    
-                }
-                
-                // Store reference to the new work item
-                playerWorkItem = newWorkItem
-                
-                // Execute after a small delay to allow UI updates to complete
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: newWorkItem)
-            }
+             
     }
 }
